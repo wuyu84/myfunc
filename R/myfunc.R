@@ -87,8 +87,11 @@ clean<-function(x,y){
   new=new[,c(4,num1,num2)]
 }
 #日期清理函数 ，把POSIXct 格式批量转成  Date 格式
-daclean<-function(data){vlist=names(data)
-for(i in vlist){if (class(data[,i])[1]=="POSIXct") data[,i]=as.Date(data[,i])}
+daclean<-function(data){
+ data=as.data.frame(data)
+for(i in 1:ncol(data)){
+  if (class(data[,i])[1]=="POSIXct")
+  data[,i]=as.Date(data[,i])}
 return(data)
 }
 
