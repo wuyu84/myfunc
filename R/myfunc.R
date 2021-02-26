@@ -236,6 +236,6 @@ jsuan<-function(x){
 #自编统计数据框各变量缺失情况函数----
 tab_miss=function(x){
   t1=lapply(x, function(y){table(is.na(y))})%>%bind_rows
-  t1$变量=names(x)
-  return(t1[,c(3,1,2)])
+  t2=data.frame(变量=names(x),t1)
+  return(t2)
 }
