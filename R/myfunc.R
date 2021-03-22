@@ -17,6 +17,7 @@ return(y)
 
 max.t=function(x){max(x,na.rm = T)}
 min.t=function(x){min(x,na.rm = T)}
+med.t=function(x){median(x,na.rm = T)}
 mean.t=function(x){mean(x,na.rm = T)}
 sum.t=function(x){sum(x,na.rm = T)}
 #1是，其他0 函数----
