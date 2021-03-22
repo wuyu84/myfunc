@@ -42,6 +42,8 @@ date.FtoN()
 date.excel2R()  
 #年级转学段--  
 gradeclass()  
+#年级转学段2--
+xzclass()
 #查询重复值函数--  
 chongfu.yes()  
 #剔除重复值函数--  
