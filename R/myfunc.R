@@ -250,3 +250,24 @@ tab_miss=function(x){
   t2=data.frame(变量=names(x),t1)
   return(t2)
 }
+
+#身份证转男女
+id2sex=function(x){
+  if (!is.na(x)) {
+    s=substr(x,17,17) %>% as.numeric
+    s1=s%%2
+    sex=ifelse(s1==1,'男','女')
+  }
+}
+#自编统计分类函数----
+df.10=function(x){
+  N=length(x)
+  y=length(x[x==1])
+  n=length(x[x==0])
+  yp=round(y*100/N,1)%>% sprintf('%1.1f',.)
+  np=round(n*100/N,1)%>% sprintf('%1.1f',.)
+  yes=paste(y," ( ",yp," ) ",sep='')
+  no=paste(n," ( ",np," ) ",sep='')
+  return(c(阳性=yes,阴性=no,合计=N))
+}
+
