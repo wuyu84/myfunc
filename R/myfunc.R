@@ -271,3 +271,25 @@ df.10=function(x){
   return(c(阳性=yes,阴性=no,合计=N))
 }
 
+
+#根据logi回归结果 计算OR及CI
+Logioutput<-function(fit){
+  #取P值
+  p<-summary(fit)$coefficients[,4]
+  #wald值
+  wald<-summary(fit)$coefficients[,3]^2
+  #B值
+  valueB<-coef(fit)
+  #OR值
+  valueOR<-exp(coef(fit))
+  #OR值得95%CI
+  confitOR<-exp(confint(fit))
+  data.frame(
+    B=round(valueB,3),
+    Wald=round(wald,3),
+    OR_with_CI=paste(round(valueOR,3),"(",
+                     round(confitOR[,1],3),"~",round(confitOR[,2],3),")",sep=""),
+    P=format.pval(p,digits = 3,eps=0.001)
+  )
+}
+
