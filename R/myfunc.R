@@ -292,4 +292,9 @@ Logioutput<-function(fit){
     P=format.pval(p,digits = 3,eps=0.001)
   )
 }
-
+#生成3月8日这种格式日期----
+mddate=function(x){
+  require(lubridate)
+  m=month(x);d=day(x)
+  return(paste(m,'月',d,'日',sep=''))
+}
