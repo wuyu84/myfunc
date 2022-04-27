@@ -298,3 +298,38 @@ mddate=function(x){
   m=month(x);d=day(x)
   return(paste(m,'月',d,'日',sep=''))
 }
+
+#输出表格 rmarkdown
+if !require(kableExtra) install.packages('kableExtra')
+tb2rmd=function(x,y){x %>% 
+    require(kableExtra)
+    kbl(caption =y, #表格标题
+        centering = T,#表格居中
+        align = 'c' ) %>%#表格单元格文字居中
+    kable_classic(full_width = F, html_font = "Cambria") }
+
+#提取括号内百分数
+tq100=function(x){str_extract(x,'(?<= \\().+?(?=%)') %>% as.numeric()}
+
+#删除调整xtab表格合计问题,x为xtab结果
+delsum=function(x){
+  x=x %>% addmargins() %>% as.data.frame %>% spread(2,3) %>% 
+    mutate_if(is.factor,as.character) %>% 
+    dplyr::rename('合计'='Sum')
+  x[x==0]=''
+  x[x=='Sum']='合计'
+  x
+}
+
+#文本格式日期转date
+c2date=function(x){ 
+  if (class(x)=='character') x=as.numeric(x) %>% date.excel2R
+  return(x) }
+
+#数据库日期批处理----
+dcdate=function(x){
+  x=x%>% mutate_if(is.POSIXct,as.Date) %>% 
+    mutate_at(vars(matches('时间')),c2date)%>% 
+    mutate_at(vars(matches('日期')),c2date)
+  return(x)
+}
