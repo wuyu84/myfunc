@@ -37,11 +37,18 @@ proz<-function(x){
 dmean<-function(x){mean=round(mean(x[!is.na(x)]),2)}
 dme.sd<-function(x){c(mean=round(mean(x[!is.na(x)]),2),
                       sd=round(sd(x[!is.na(x)]),2))}
+dme_sd<-function(x){mean=round(mean(x[!is.na(x)]),2)
+                      sd=round(sd(x[!is.na(x)]),2)
+                      paste(mean,'±',sd,sep='')}
+
 dsd<-function(x){sd=round(sd(x[!is.na(x)]),2)}
 dn.me.sd<-function(x){round(c(n=length(x[!is.na(x)]),
                               mean=mean(x[!is.na(x)]),
                               sd=sd(x[!is.na(x)])),2)}
 dM.IQR<-function(x){c(med=round(median(x),2),IQR=round(IQR(x),2))}
+dM_IQR<-function(x){med=round(median(x),2)
+IQR=round(IQR(x),2)
+paste(med,'(IQR:',IQR,')',sep = '')}
 Iqr<-function(x){IQR=round(IQR(x),2)}
 cv<-function(x){round(100*sd(x[!is.na(x)])/mean(x[!is.na(x)]),2)}
 dme.cv<-function(x){round(c(mean=mean(x[!is.na(x)]),
@@ -67,6 +74,8 @@ dM.all<-function(x){c(N=length(x[!is.na(x)]),
                       min=min(x,na.rm=T),
                       max=max(x,na.rm = T)
 )}
+
+
 
 #身份证转出生日期函数----
 id2bir<-function(x) {
@@ -300,7 +309,6 @@ mddate=function(x){
 }
 
 #输出表格 rmarkdown
-if !require(kableExtra) install.packages('kableExtra')
 tb2rmd=function(x,y){x %>% 
     require(kableExtra)
     kbl(caption =y, #表格标题
