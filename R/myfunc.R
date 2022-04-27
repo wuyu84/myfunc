@@ -309,8 +309,9 @@ mddate=function(x){
 }
 
 #输出表格 rmarkdown
-tb2rmd=function(x,y){x %>% 
-    require(kableExtra)
+tb2rmd=function(x,y){
+  require(kableExtra)
+  x %>% 
     kbl(caption =y, #表格标题
         centering = T,#表格居中
         align = 'c' ) %>%#表格单元格文字居中
