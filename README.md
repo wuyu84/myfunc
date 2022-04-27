@@ -18,10 +18,12 @@ mto2()
 proz()  
 #统计指标系列--  
 dmean()  
-dme.sd()  
+dme.sd()
+dme_sd
 dsd()  
 dn.me.sd()  
-dM.IQR()  
+dM.IQR()
+dM_IQR
 Iqr()  
 cv()  
 dme.cv()  
@@ -62,3 +64,17 @@ disget()
 jsuan()  
 #自编统计数据框各变量缺失情况函数--  
 tab_miss()  
+##身份证转男女
+id2sex()
+#根据logi回归结果 计算OR及CI
+Logioutput()
+#生成3月8日这种格式日期----
+mddate()
+#输出表格三线表
+tb2rmd()
+#提取括号内百分数
+tq100()
+#数据库日期批处理----
+dcdate()
+#文本格式日期转date
+c2date()
