@@ -308,9 +308,10 @@ mddate=function(x){
   return(paste(m,'月',d,'日',sep=''))
 }
 
-#输出表格 rmarkdown
+# 输出表格 rmarkdown
 tb2rmd=function(x,y){
   require(kableExtra)
+  options(knitr.kable.NA = '') #NA 空白显示
   x %>% 
     kbl(caption =y, #表格标题
         centering = T,#表格居中
